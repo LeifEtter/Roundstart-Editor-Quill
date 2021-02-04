@@ -1,0 +1,31 @@
+.starterset {
+  width: 272;
+  height: 170;
+  background-color: white;
+  margin: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.starterset .image-container {
+  width: 100%;
+  border-radius: 17px;
+  height: 60%;
+  background-image: url("../../img/tesla.jpg");
+  background-size: cover;
+  background-position-y: center;
+}
+
+.starterset .pack-title {
+  margin-top: 5px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.starterset .pack-description {
+  margin: 5px 25px 0px 25px;
+  text-align: center;
+  font-size: 13px;
+}
+/*# sourceMappingURL=starterset.css.map */
