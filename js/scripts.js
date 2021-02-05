@@ -1,5 +1,5 @@
 async function createGrid() {
-    var userPacks = await getPacksByUser("Leif");
+    var userPacks = await getPacksByUser("leif");
     if (userPacks) {
       for (let pack of userPacks) {
         $("#pack-feed").append(`
@@ -23,6 +23,7 @@ async function createGrid() {
 
 function addListenerGlider() {
   window.addEventListener('load', function(){
+    console.log('glider selected');
       new Glider(document.querySelector('.glider'), {
           slidesToShow: 5,
           slidesToScroll: 5,
@@ -33,4 +34,16 @@ function addListenerGlider() {
           }
       })
   })
+}
+
+async function addPacksToGlider(category) {
+  var packs = await getPacksByCategory(category);
+  if (packs) {
+    for (let pack in packs) {
+      $("#glider").append('<div style="width: 100px; height: 100px; background-color: green;" ></div>');
+      var glider = document.getElementById('glider');
+    }
+  }
+  
+
 }
