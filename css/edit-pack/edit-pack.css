@@ -8,8 +8,8 @@ body {
   font-family: 'Quicksand' !important;
   background-color: #FAFAFA;
   border-radius: 20px 20px 0 0 !important;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 2px 1px 4px -2px;
+          box-shadow: rgba(0, 0, 0, 0.16) 2px 1px 4px -2px;
 }
 
 #editor {
