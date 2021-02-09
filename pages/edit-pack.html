@@ -9,10 +9,16 @@
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <div id="editor-container">
-        <div id="editor">
-            
-        </div>
+    <div id="main-body">
+      <div id="info-fields">
+        <input name="title" type="text" class="custom-text-input" placeholder="Titel">
+        <textarea class="custom-text-input" rows="6" cols="10" placeholder="Beschreibung"></textarea>
+        <input type="text" class="custom-text-input" placeholder="Creator Name">
+        <button class="input-button">Einreichen</button>
+      </div>
+      <div id="editor-container">
+            <div id="editor"></div>
+      </div>
     </div>
     
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
