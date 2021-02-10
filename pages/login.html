@@ -11,15 +11,16 @@
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    <h1 class="title-style">Registrieren</h1>
+    <h1 class="title-style">Login</h1>
     <div class="flex-center">
         <div id="register-body">
-            <input id="name" class="custom-text-input" placeholder="Name"></input>
             <input id="email" class="custom-text-input" placeholder="Email"></input>
             <input id="passwort" class="custom-text-input" placeholder="Passwort" type="password"></input>
             <p id="error-message" class="error-message" style="margin-top:10px; text-align:center;"></p>
-            <button onclick="{register();}" class="input-button" id="register-button">Registrieren</button>
-            <a id="switch-auth" href="login.html">Du hast schon ein Account?</a>
+            <button onclick="{login();}" class="input-button" id="login-button">Einloggen</button>
+            <a id="switch-auth" href="register.html">Du hast noch kein Account? Dann mach dir schnell eins!</a>
+            
+            
         </div>
     </div>
     
@@ -36,7 +37,7 @@
     <script>
         $(document).keypress(function(e){
         if (e.which == 13){
-            $("#register-button").click();
+            $("#login-button").click();
             console.log('clicked');
         }
         });

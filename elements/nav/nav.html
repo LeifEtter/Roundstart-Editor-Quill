@@ -1,37 +1,53 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <div id="logoDiv">
-        <h1>ROUNDSTART</h1>
-   </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a href="google.com">
-                <i class="fas fa-home"></i>
-                Startseite
-           </a>
-        </li>
-        <li class="nav-item">
-            <a href="google.com">
-                <i class="fas fa-search"></i>
-                Suche
-            </a>
-        </li>
-        <li class="nav-item">
-          <a href="google.com">
-              <i class="fas fa-user-friends"></i>
-              Partner
-          </a>
+  <div id="logoDiv">
+    <h1>ROUNDSTART</h1>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a href="google.com">
+          <i class="fas fa-home"></i>
+          Startseite
+        </a>
       </li>
-        <li class="nav-item">
-            <a href="google.com">
-                <i class="fas fa-pen"></i>
-                Mitmachen
-            </a>
-        </li>
-      </ul>
+      <li class="nav-item">
+        <a href="../../pages/edit-pack.html">
+          <i class="fas fa-search"></i>
+          Suche
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="google.com">
+          <i class="fas fa-user-friends"></i>
+          Partner
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="../../pages/edit-pack.html">
+          <i class="fas fa-pen"></i>
+          Mitmachen
+        </a>
+      </li>
+    </ul>
+    <div class="dropdown show">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Profil <img class="profile-icon" id="profile-icon"></img>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Account</a>
+        <a class="dropdown-item" href="#">Einstellungen</a>
+        <a class="dropdown-item" onmousedown="{logout();}" style="cursor: pointer;">Ausloggen</a>
+      </div>
     </div>
-  </nav>
+
+  </div>
+</nav>
+<script>
+  setProfilePic();
+</script>

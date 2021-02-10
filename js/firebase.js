@@ -13,33 +13,10 @@ let db = firebase.firestore(app);
 let packs = db.collection('packs');
 let users = db.collection('users');
 
-async function getPacksByUser(userID) {
+async function getPacks(attribute, value) {
     var docs = [];
     var query = await packs
-      .where("creator", "==", userID)
-      .get()
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          docs.push(doc.data());
-        });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-      });
-    
-    if (!docs.length == 0) {
-      console.log(`${docs.length} documents found`);
-      return docs;
-    } else {
-      console.log("No Document found")
-      return null;
-    }
-}
-
-async function getPacksByCategory(category) {
-    var docs = [];
-    var query = await packs
-      .where("category", "==", category)
+      .where(attribute, "==", value)
       .get()
       .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -76,7 +53,6 @@ async function addPacks() {
       .catch(function (error) {
         console.log("Error adding documents: ", error);
       });
-      
   }
   console.log("Packs added succesfully!");
 }
@@ -116,47 +92,7 @@ async function deletePacksByCreator(creator) {
         console.log("Error deleting documents: ", error);
       });
 }
-async function addUser() {
-  var name = document.getElementById("name").value;
-  users.doc().set({
-    name: name,
-    rank: 'user',
-  })
-}
-function errorOutput(errorMessage, errorCode) {
-  
 
-  if(errorCode.includes('email')) {
-    $('#email').css("box-shadow", "inset 0 0 4px red");
-  } else if(errorCode.includes('password')) {
-    $('#passwort').css("box-shadow", "inset 0 0 4px red");
-  }
-  $('#error-message').html(errorMessage);
-}
-
-function resetError() {
-  $('#email').css("box-shadow", "rgba(0, 0, 0, 0.16) 0px 1px 4px");
-  $('#passwort').css("box-shadow", "rgba(0, 0, 0, 0.16) 0px 1px 4px");
-  $('#error-message').text('');
-}
-
-async function register() {
-  resetError();
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("passwort").value;
-
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      console.log("Registered Sucessfully");
-      var user = userCredential.user;
-      addUser();
-    })
-    .catch(function (error) {
-      console.log("Error Creating User: ", error);
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      errorOutput(errorMessage, errorCode);
-    });
-  
+async function setProfilePic() {
   
 }
