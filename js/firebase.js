@@ -117,10 +117,31 @@ async function deletePacksByCreator(creator) {
       });
 }
 async function addUser() {
+  var name = document.getElementById("name").value;
+  users.doc().set({
+    name: name,
+    rank: 'user',
+  })
+}
+function errorOutput(errorMessage, errorCode) {
+  
 
+  if(errorCode.includes('email')) {
+    $('#email').css("box-shadow", "inset 0 0 4px red");
+  } else if(errorCode.includes('password')) {
+    $('#passwort').css("box-shadow", "inset 0 0 4px red");
+  }
+  $('#error-message').html(errorMessage);
+}
+
+function resetError() {
+  $('#email').css("box-shadow", "rgba(0, 0, 0, 0.16) 0px 1px 4px");
+  $('#passwort').css("box-shadow", "rgba(0, 0, 0, 0.16) 0px 1px 4px");
+  $('#error-message').text('');
 }
 
 async function register() {
+  resetError();
   var email = document.getElementById("email").value;
   var password = document.getElementById("passwort").value;
 
@@ -128,10 +149,13 @@ async function register() {
     .then((userCredential) => {
       console.log("Registered Sucessfully");
       var user = userCredential.user;
-
+      addUser();
     })
     .catch(function (error) {
-      console.log("Error deleting documents: ", error);
+      console.log("Error Creating User: ", error);
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      errorOutput(errorMessage, errorCode);
     });
   
   

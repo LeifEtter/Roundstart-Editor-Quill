@@ -8,4 +8,8 @@ body {
   text-align: center;
   font-weight: 500;
 }
+
+.error-message {
+  color: red;
+}
 /*# sourceMappingURL=text.css.map */

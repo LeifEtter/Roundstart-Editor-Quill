@@ -17,7 +17,11 @@ h1 {
   max-width: 300px;
 }
 
-#register-body input, #register-body button {
+#register-body input {
   margin-top: 20px;
+}
+
+#register-body button {
+  margin-top: 50px;
 }
 /*# sourceMappingURL=login.css.map */
