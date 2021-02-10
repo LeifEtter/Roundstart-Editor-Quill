@@ -1,0 +1,23 @@
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+h1 {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+#register-body {
+  width: 80%;
+  max-width: 300px;
+}
+
+#register-body input, #register-body button {
+  margin-top: 20px;
+}
+/*# sourceMappingURL=login.css.map */

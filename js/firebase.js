@@ -11,6 +11,7 @@ var firebaseConfig = {
 let app = firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore(app);
 let packs = db.collection('packs');
+let users = db.collection('users');
 
 async function getPacksByUser(userID) {
     var docs = [];
@@ -77,7 +78,29 @@ async function addPacks() {
       });
       
   }
-  console.log("Packs added Succesfully!");
+  console.log("Packs added succesfully!");
+}
+
+async function addPack() {
+  var title = document.getElementById('title').value;
+  var description = document.getElementById('description').value;
+  var creator = document.getElementById('creator').value;
+  let content = quill.getContents().ops;
+  let htmlContent = quill.root.innerHTML;
+  
+  packs.doc().set({
+    name: title,
+    creator: creator,
+    description: description,
+    content: content,
+    category: 'default',
+    htmlContent: htmlContent
+  })
+  .catch(function (error) {
+    console.log("Error adding documents: ", error);
+  });
+
+  console.log("Pack added succesfully!")
 }
 
 async function deletePacksByCreator(creator) {
@@ -92,4 +115,24 @@ async function deletePacksByCreator(creator) {
       .catch(function (error) {
         console.log("Error deleting documents: ", error);
       });
+}
+async function addUser() {
+
+}
+
+async function register() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("passwort").value;
+
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      console.log("Registered Sucessfully");
+      var user = userCredential.user;
+
+    })
+    .catch(function (error) {
+      console.log("Error deleting documents: ", error);
+    });
+  
+  
 }

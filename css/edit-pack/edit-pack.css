@@ -1,26 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
-body {
-  font-family: 'Quicksand' !important;
-}
-
-.ql-toolbar {
-  border: none !important;
-  font-family: 'Quicksand' !important;
-  background-color: #FAFAFA;
-  border-radius: 20px 20px 0 0 !important;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 2px 1px 4px -2px;
-          box-shadow: rgba(0, 0, 0, 0.16) 2px 1px 4px -2px;
-}
-
-#editor {
-  border: none !important;
-  font-family: 'Quicksand' !important;
-  background-color: #FAFAFA;
-  border-radius: 0 0 20px 20px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px -2px;
-          box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px -2px;
-}
-
 #main-body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,53 +20,5 @@ body {
 
 #main-body #info-fields textarea {
   resize: none;
-}
-
-#main-body #info-fields .custom-text-input {
-  background-color: #FAFAFA;
-  border: none;
-  border-radius: 20px;
-  width: 100%;
-}
-
-#main-body #info-fields input.custom-text-input {
-  height: 50px;
-}
-
-#main-body #editor-container {
-  width: 100%;
-  border-radius: 20px;
-  max-width: 600px;
-  margin-left: 20px;
-}
-
-.custom-text-input {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  outline: none;
-  padding: 20px;
-}
-
-.custom-text-input::-webit-input-placeholder {
-  text-align: center;
-}
-
-.custom-text-input::-moz-placeholder {
-  text-align: center;
-}
-
-.custom-text-input:-ms-input-placeholder {
-  text-align: center;
-}
-
-.input-button {
-  background-color: #009688;
-  border: none;
-  width: 100%;
-  height: 50px;
-  border-radius: 20px;
-  color: white;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 /*# sourceMappingURL=edit-pack.css.map */

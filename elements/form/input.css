@@ -1,0 +1,27 @@
+.custom-text-input {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  padding: 20px;
+  background-color: #FAFAFA;
+  border: none;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.custom-text-input::-webit-input-placeholder {
+  text-align: center;
+}
+
+.custom-text-input::-moz-placeholder {
+  text-align: center;
+}
+
+.custom-text-input:-ms-input-placeholder {
+  text-align: center;
+}
+
+input.custom-text-input {
+  height: 50px;
+}
+/*# sourceMappingURL=input.css.map */
