@@ -93,6 +93,3 @@ async function deletePacksByCreator(creator) {
       });
 }
 
-async function setProfilePic() {
-  
-}
