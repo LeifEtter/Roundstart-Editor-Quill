@@ -1,18 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+html, body
+    position: relative
+    height: 100%
 
-body
-    padding: 0
-    margin: 0
-    font-family: 'Quicksand' !important
-
-.pack-feed
-    display: grid
-    grid-template-columns: repeat(auto-fit, minmax(200px,300px))
+.swiper-container
     width: 100%
-    justify-content: center
+    height: 220px
+    border: 1px solid red
 
-    .pack-preview 
-        width: 250px
-        height: 200px
-        background-color: red
-        margin: 20px
+.swiper-slide
+    text-align: center
+
+.netflix-slider
+    .swiper-wrapper
+
+    
+    .swiper-slide
+        transition: 250ms all
+
+        &:hover
+            transform: scale(1.2)
+            z-index: 1
+        
+        &:first-child:hover
+            margin: 0 40px
+        
+        &:last-child:hover
+            margin: 0 -40px
+
+.erstellen-wrapper
+    padding: 20px
+    width: 100%
+    display: flex
+
+    button
+        cursor: pointer

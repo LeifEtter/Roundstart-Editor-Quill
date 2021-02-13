@@ -1,3 +1,14 @@
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    sessionStorage.setItem('local_uid', user.uid);
+    console.log("User is signed!");
+  } else {
+    console.log("User is signed out!")
+  }
+});
+
+
 async function addUser(id) {
   console.log('adding User to DB');
   var name = document.getElementById("name").value;
@@ -57,7 +68,6 @@ async function register() {
     });
   console.log(success);
   if(success == true) {
-    console.log('asdasd');
     await addUser(user.uid);
     window.location.href = "../pages/user-info.html";
   }
@@ -72,6 +82,7 @@ async function login() {
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
+      console.log(userCredential.uid);
       console.log("Signed in succesfully!");
       window.location.href = "../pages/user-info.html";
     })
@@ -83,31 +94,13 @@ async function login() {
     });
 }
 
-function authStateListener() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log("User is signed in.");
-      return(user.uid);
-    } else {
-      console.log("User is signed out.");
-      return null;
-    }
-  });
-}
 
-async function getProfilePic(uid) {
-  var profilePic = [];
-  await users
-      .get(uid)
-      .then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          profilePic.push(doc.data()['profile_img']);
-        });
-      })
-      .catch(function (error) {
-        console.log("Error getting documents: ", error);
-      });
-  return profilePic[0];
+
+async function getProfilePic() {
+  var uid = sessionStorage.getItem('local_uid');
+  const snapshot = await db.collection('users').doc(uid).get()
+  const data = snapshot.data();
+  return data['profile_img'];
 }
 
 function logout() {
@@ -115,16 +108,16 @@ function logout() {
     .auth()
     .signOut()
     .then(() => {
+      sessionStorage.setItem('local_uid', null);
       window.location.href = "../pages/login.html";
     })
     .catch(function (error) {
       console.log("Error singing out: ", error);
     });
+    sessionStorage.setItem('local_uid', null);
 }
 
 async function setProfilePic() {
-  var profilePic = await getProfilePic('3i4L2g3cg6LAXozCikb7');
-  console.log(profilePic);
+  var profilePic = await getProfilePic();
   $('#profile-icon').attr("src", `../profile-images/${profilePic}`);
 }
-
