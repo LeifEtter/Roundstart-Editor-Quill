@@ -58,6 +58,7 @@ async function addPack() {
     category: 'default',
     htmlContent: htmlContent,
     creator_id: creatorId,
+    verified: true,
   })
   .catch(function (error) {
     console.log("Error adding documents: ", error);
