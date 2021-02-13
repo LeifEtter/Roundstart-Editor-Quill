@@ -13,7 +13,7 @@ let db = firebase.firestore(app);
 let packs = db.collection('packs');
 let users = db.collection('users');
 
-let categories = ['essen', 'beziehung', 'finanzen']
+let categories = ['essen', 'beziehung', 'finanzen'];
 
 
 

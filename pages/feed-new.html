@@ -47,43 +47,11 @@
     <script src="../js/authentication.js"></script>
     <script src="../js/scripts.js"></script>
     <script src="../js/addNav.js"></script>
+    <script src="../js/swiper.js"></script>
 
     <script>
         console.log(sessionStorage.getItem('local_uid'));
-        async function addPacksToSwiper(category) {
-            var packs = await getPacks("category", category, true);
-            if (packs) {
-                for (let pack in packs) {
-                    $(".swiper-wrapper").append(`
-                        <div class="starterset swiper-slide">
-                            <div class="image-container"></div>
-                            <div class="preview-text-container">
-                                <div class="pack-title">
-                                    <h1 style="font-size: 23">pack</h1>
-                                </div>
-                                <div class="pack-description">
-                                    <p>testDescription</p>
-                                </div>
-                            </div>
-                        </div> 
-                    `);
-                }
-            }
-                var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 4,
-                spaceBetween: 10,
-                slidesPerGroup: 4,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
-        }
-        addPacksToSwiper('essen');
+            
 
 
         

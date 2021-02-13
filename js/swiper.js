@@ -36,14 +36,14 @@ function initSwiper() {
 
 async function addPacksToSwiper(category) {
     var packs = await getPacks("category", category, true);
-    if (packs) {
-        for (let pack in packs) {
+    if (packs) {   
+        for (let pack of packs) {
             $(".swiper-wrapper").append(`
                 <div class="starterset swiper-slide">
                     <div class="image-container"></div>
                     <div class="preview-text-container">
                         <div class="pack-title">
-                            <h1 style="font-size: 23">pack</h1>
+                            <h1 style="font-size: 23">${pack['name']}</h1>
                         </div>
                         <div class="pack-description">
                             <p>testDescription</p>
@@ -56,3 +56,20 @@ async function addPacksToSwiper(category) {
     initSwiper();
 }
 
+async function addSwipers() {
+    for(let category of categories) {
+        $('body').append(`
+            <div class="pack-swiper">
+                <div class="swiper-container">
+                    <div class="swiper-category-${category}">
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        `);
+
+
+    }
+
+}
