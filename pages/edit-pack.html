@@ -13,31 +13,33 @@
 </head>
 <body>
     <div id="nav-placeholder"></div>
+    <div id="center-body">
+
     <div id="main-body">
 
       <div id="info-fields">
         <input id="title" type="text" class="custom-text-input" placeholder="Titel">
         <textarea id="description" class="custom-text-input" rows="6" cols="10" placeholder="Beschreibung"></textarea>
-        <input id="creator" type="text" class="custom-text-input" placeholder="Creator Name">
+        <div id="category-button-container"></div>
         <input type="file" id="cover-image">
         <div id="cover-image-container">
           <img id="cover-image-display">
         </div>
-        
-        <label for="cover-image" style="width: 100%;"><div id="cover-button">Pick Image</div></label>
+        <label for="cover-image" style="width: 100%;"><div id="cover-button">Wähle ein Bild</div></label>
+        <div class="entry-button-container">
+          <button class="input-button accent-border" onmousedown="{addPack();}">Vorschau</button>
+          <button class="input-button accent-border" onmousedown="{addPack();}">Speichern</button> 
+          <button class="input-button accent-background" onmousedown="{addPack();}">Einreichen</button>
+        </div>
       </div>
+
       <div id="editor-fields">
         <div id="editor-container">
               <div id="editor"></div>
         </div>
-        <div id="category-button-container"></div>
-        <div class="entry-button-container">
-          <button class="input-button" onmousedown="{addPack();}">Änderungen Speichern</button> 
-          <div style="width: 50px;"></div>
-          <button class="input-button" onmousedown="{addPack();}">Einreichen</button>
-        </div>
       </div>
     </div>
+  </div>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script
 			  src="https://code.jquery.com/jquery-3.5.1.min.js"
