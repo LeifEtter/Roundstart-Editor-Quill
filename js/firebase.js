@@ -22,6 +22,21 @@ let categories = [
   "Ernährung",
 ];
 
+/*async function savePhoto() {
+    let photo = document.getElementById("cover-image").files[0];
+    let formData = new FormData();     
+         
+    formData.append("photo", photo); 
+    
+    try {
+       let r = await fetch('/upload/image', {method: "POST", body: formData}); 
+       console.log('HTTP response code:',r.status); 
+    } catch(e) {
+       console.log('Huston we have problem...:', e);
+    }
+}*/
+
+
 async function addPacks() {
   var creatorId = sessionStorage.getItem("local_uid");
   var name = "Pack ";
@@ -50,6 +65,7 @@ async function addPacks() {
 }
 
 async function addPack() {
+  /*await savePhoto();*/ 
   var categories = [];
   console.log($(".activated").id);
   $(".activated").each(function () {
@@ -58,7 +74,6 @@ async function addPack() {
   var creatorId = sessionStorage.getItem("local_uid");
   var title = document.getElementById("title").value;
   var description = document.getElementById("description").value;
-  var creator = document.getElementById("creator").value;
   let content = quill.getContents().ops;
   let htmlContent = quill.root.innerHTML;
 
@@ -66,7 +81,7 @@ async function addPack() {
     .doc()
     .set({
       name: title,
-      creator: creator,
+      creator: 'template',
       description: description,
       content: content,
       categories: categories,
@@ -102,47 +117,9 @@ async function getUserRank() {
   return data["rank"];
 }
 
-async function getPacks(attribute, value, verified, user) {
-  var docs = [];
-  var query = await packs
-    .where(attribute, "==", value)
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        if (verified && doc.data()["verified"]) {
-          if (user) {
-            if (doc()["creator_id"]) {
-              docs.push(doc.data());
-            }
-          } else {
-            docs.push(doc.data());
-          }
-        } else if (!verified) {
-          if (user) {
-            if (doc()["creator_id"]) {
-              docs.push(doc.data());
-            }
-          } else {
-            docs.push(doc.data());
-          }
-        }
-      });
-    })
-    .catch(function (error) {
-      console.log("Error getting documents: ", error);
-    });
-
-  if (!docs.length == 0) {
-    console.log(`${docs.length} documents found`);
-    return docs;
-  } else {
-    console.log("No Document found");
-    return null;
-  }
-}
-
 async function getPacksByCategory(category, verified, user) {
   var docs = [];
+  !category ? category = categories : null;
   var query = await packs
     .where("categories", "array-contains", category)
     .get()

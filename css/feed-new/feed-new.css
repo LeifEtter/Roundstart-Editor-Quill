@@ -8,6 +8,13 @@ html, body {
   height: 250px;
 }
 
+.swiper-seperator {
+  width: 95%;
+  height: 2px;
+  background-color: black;
+  margin: 0 auto;
+}
+
 .swiper-slide {
   text-align: center;
 }

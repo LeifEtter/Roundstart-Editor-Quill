@@ -18,25 +18,11 @@ function setElementsPerView() {
     }
 }
 
-function initSwiper() {
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: elementsPerView,
-        spaceBetween: 10,
-        slidesPerGroup: 4,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-}
-
 function initSwiperCat(category) {
+    var pointer;
+    category ? pointer = `.sc-${category}` : pointer = '.swiper-container';
     var swiper = new Swiper(`.sc-${category}`, {
-        slidesPerView: 4,
+        slidesPerView: elementsPerView,
         spaceBetween: 10,
         slidesPerGroup: 4,
         pagination: {
@@ -97,6 +83,7 @@ async function addByCat(category) {
 async function addSwipers() {
     for(let category of categories) {
         $('body').append(`
+            <h1 class="category-title">${category}</h1>
             <div class="pack-swiper">
                 <div class="swiper-container sc-${category}">
                     <div class="swiper-wrapper sw-${category}">
@@ -105,9 +92,9 @@ async function addSwipers() {
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
+            <div class="swiper-seperator"></div>
         `);
         await addByCat(category);
         initSwiperCat(category);
     }
-
 }
