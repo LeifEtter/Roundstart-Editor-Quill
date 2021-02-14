@@ -12,26 +12,26 @@ html, body {
   text-align: center;
 }
 
-.netflix-slider .swiper-wrapper {
+.pack-swiper .swiper-wrapper {
   padding: 20px 0;
 }
 
-.netflix-slider .swiper-slide {
+.pack-swiper .swiper-slide {
   -webkit-transition: 250ms all;
   transition: 250ms all;
 }
 
-.netflix-slider .swiper-slide:hover {
+.pack-swiper .swiper-slide:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   z-index: 1;
 }
 
-.netflix-slider .swiper-slide:first-child:hover {
+.pack-swiper .swiper-slide:first-child:hover {
   margin: 0 40px;
 }
 
-.netflix-slider .swiper-slide:last-child:hover {
+.pack-swiper .swiper-slide:last-child:hover {
   margin: 0 -40px;
 }
 /*# sourceMappingURL=feed-new.css.map */
