@@ -14,40 +14,50 @@
           <p class="d-none d-md-inline">Startseite</p>
         </a>
       </li>
-      <li class="nav-item">
+      <!--<li class="nav-item">
         <a href="../../pages/editor-feed.html">
           <i class="fas fa-search"></i>
           <p class="d-none d-md-inline">Suche</p>
         </a>
-      </li>
-      <li class="nav-item">
+      </li>-->
+      <!--<li class="nav-item">
         <a href="google.com">
           <i class="fas fa-user-friends"></i>
           <p class="d-none d-md-inline">Partner</p>
         </a>
-      </li>
-      <li class="nav-item">
+      </li>-->
+      <li class="nav-item hidden" id="editor-access">
         <a href="../../pages/editor-feed.html">
           <i class="fas fa-pen"></i>
-          <p class="d-none d-md-inline">Mitmachen</p>
+          <p class="d-none d-md-inline">Deine Startersets</p>
+        </a>
+      </li>
+      <li class="nav-item" id="upgrade-access">
+        <a href="../../pages/editor-feed.html">
+          <i class="fas fa-plus"></i>
+          <p class="d-none d-md-inline">Upgrade Antrag</p>
         </a>
       </li>
     </ul>
-    <div class="dropdown show">
+    <div class="dropdown-show hidden" id="dropdown-show-container">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        Profil <img class="profile-icon" id="profile-icon"></img>
+        <p id="profile-name">Einloggen</p>
+        <div style="display: inline;" id="profile-image-container"></div>
       </a>
-
+      
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#">Account</a>
-        <a class="dropdown-item" href="#">Einstellungen</a>
+        <a class="dropdown-item" href="account.html">Account</a>
+        <!--<a class="dropdown-item" href="#">Einstellungen</a>-->
         <a class="dropdown-item" onmousedown="{logout();}" style="cursor: pointer;">Ausloggen</a>
       </div>
     </div>
-
+  </div>
+  <div id="login-register-links" class="">
+    <a href="../../pages/login.html">Login</a>
+    <a href="../../pages/register.html">Register</a>
   </div>
 </nav>
 <script>
-  setProfilePic();
+  setProfileData();
 </script>

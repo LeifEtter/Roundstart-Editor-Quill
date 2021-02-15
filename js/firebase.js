@@ -22,52 +22,32 @@ let categories = [
   "Ernährung",
 ];
 
-/*async function savePhoto() {
-    let photo = document.getElementById("cover-image").files[0];
-    let formData = new FormData();     
-         
-    formData.append("photo", photo); 
-    
-    try {
-       let r = await fetch('/upload/image', {method: "POST", body: formData}); 
-       console.log('HTTP response code:',r.status); 
-    } catch(e) {
-       console.log('Huston we have problem...:', e);
-    }
-}*/
+async function savePhoto() {
+  var submitterID = sessionStorage.getItem("local_uid");
+  var data = new FormData();
+  let photo = document.getElementById("cover-image").files[0];
+  var blob = photo.slice(0, photo.size, 'image/png');
 
-
-async function addPacks() {
-  var creatorId = sessionStorage.getItem("local_uid");
-  var name = "Pack ";
-  var creator = "leif";
-  var description = "Test Beschreibung";
-  var category = "essen";
-  var verified = true;
-
-  for (let i = 0; i < 10; i++) {
-    let packName = name + i;
-    packs
-      .doc()
-      .set({
-        name: packName,
-        creator: creator,
-        description: description,
-        category: category,
-        verified: verified,
-        creator_id: creatorId,
-      })
-      .catch(function (error) {
-        console.log("Error adding documents: ", error);
-      });
-  }
-  console.log("Packs added succesfully!");
+  var filename = document.getElementById("cover-image").value;
+  var filename = filename.split('.').slice(0, -1).join('.');
+  var filenamefull = filename + '-user-' + submitterID.toString();
+  var newFile = new File([blob], filenamefull + '.jpg', {type: 'image/png'});
+  data.append('cover-image', newFile);
+  $.ajax({
+      url: '../upload.php',
+      data: data,
+      type: 'POST',
+      processData: false,
+      contentType: false,
+      success: function() {
+          console.log("Success!");
+      },
+  });
 }
 
 async function addPack() {
-  /*await savePhoto();*/ 
+  await savePhoto();
   var categories = [];
-  console.log($(".activated").id);
   $(".activated").each(function () {
     categories.push($(this).attr("id"));
   });
@@ -76,6 +56,11 @@ async function addPack() {
   var description = document.getElementById("description").value;
   let content = quill.getContents().ops;
   let htmlContent = quill.root.innerHTML;
+
+  var filename = document.getElementById("cover-image").value;
+  var filename = filename.split('.').slice(0, -1).join('.');
+  var filename = filename.replace(/^.*[\\\/]/, '');
+  var cover_image = filename + '-user-' + creatorId.toString();
 
   packs
     .doc()
@@ -88,26 +73,13 @@ async function addPack() {
       htmlContent: htmlContent,
       creator_id: creatorId,
       verified: true,
+      cover_image: cover_image,
     })
     .catch(function (error) {
       console.log("Error adding documents: ", error);
     });
 
   console.log("Pack added succesfully!");
-}
-
-async function deletePacksByCreator(creator) {
-  var query = await packs
-    .where("creator", "==", creator)
-    .get()
-    .then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        doc.ref.delete();
-      });
-    })
-    .catch(function (error) {
-      console.log("Error deleting documents: ", error);
-    });
 }
 
 async function getUserRank() {

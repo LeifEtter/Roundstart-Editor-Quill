@@ -27,7 +27,13 @@ async function addUser(id) {
   });
 }
 
-
+function checkLogin() {
+  if(sessionStorage.getItem("local_uid") == undefined) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 function errorOutput(errorMessage, errorCode) {
   if (errorCode.includes("email")) {
@@ -96,13 +102,6 @@ async function login() {
 
 
 
-async function getProfilePic() {
-  var uid = sessionStorage.getItem('local_uid');
-  const snapshot = await db.collection('users').doc(uid).get()
-  const data = snapshot.data();
-  return data['profile_img'];
-}
-
 function logout() {
   firebase
     .auth()
@@ -117,7 +116,43 @@ function logout() {
     sessionStorage.setItem('local_uid', null);
 }
 
-async function setProfilePic() {
-  var profilePic = await getProfilePic();
-  $('#profile-icon').attr("src", `../profile-images/${profilePic}`);
+async function getProfileData() {
+  var uid = sessionStorage.getItem('local_uid');
+  const snapshot = await db.collection('users').doc(uid).get();
+  const data = snapshot.data()
+  if(data == undefined) {
+    return null;
+  } else {
+    return data;
+  }
+}
+
+async function setProfileData() {
+  var profileData = await getProfileData();
+  if(profileData) {
+    /*$('#profile-icon').attr("src", `../profile-images/${profileData[0]}`);*/
+    $('#profile-name').text(`${profileData['name']}`);
+    $('#profile-image-container').append(`
+      <img class="profile-icon" id="profile-icon" src="../profile-images/${profileData['profile_img']}"></img>
+    `);
+    $('#dropdown-show-container').toggleClass('hidden');
+    $('#login-register-links').toggleClass('hidden');
+
+    if(profileData['rank'] != 'user') {
+      $('#editor-access').toggleClass('hidden');
+      $('#upgrade-access').toggleClass('hidden');
+    }
+  }
+}
+
+
+async function addAccountData() {
+    var accountData = await getProfileData();
+    if(accountData) {
+      $('#display-name').text(`${accountData['name']}`);
+
+      let rankUpperCase = accountData['rank'].charAt(0).toUpperCase() + accountData['rank'].slice(1);
+      $('#display-rank').text(rankUpperCase);
+      $('#display-email').text(`${accountData['email']}`);
+    }
 }
