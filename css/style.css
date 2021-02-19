@@ -1,0 +1,392 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+body {
+  font-family: 'Quicksand' !important;
+  color: #212121 !important;
+}
+
+button, input {
+  border: none;
+  outline: none;
+  height: 50px;
+  text-align: center;
+}
+
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+button, label {
+  cursor: pointer;
+}
+
+.text-center, .main-body-account {
+  text-align: center;
+}
+
+.center, .main-body-account {
+  margin: 0 auto;
+}
+
+.swiper-seperator {
+  width: 95%;
+  height: 2px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.bg-accent, .auth-body button, #main-body #info-fields .entry-button-container .input-button {
+  background-color: #009688;
+  color: white;
+}
+
+.bg-standard, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #category-button-container .category-button, .main-body-account .display-data {
+  background-color: #FAFAFA;
+  color: #757575;
+}
+
+.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data {
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.full-width, .auth-body button, .auth-body input, .main-body-account button, .main-body-account .display-data {
+  width: 100%;
+}
+
+.title-text {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.category-title-text {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.error-text {
+  color: red;
+}
+
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vertical-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
+  text-decoration: none !important;
+  color: #212121 !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.navbar {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  min-height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.navbar h1 {
+  margin: 0;
+  font-size: 23px;
+  color: #3f51b5;
+}
+
+.navbar i {
+  padding: 5px;
+}
+
+.navbar a {
+  margin-left: 20px;
+}
+
+.navbar p {
+  display: inline;
+}
+
+.navbar .profile-icon {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  border: 0 !important;
+  margin-left: 5px;
+}
+
+.auth-body {
+  max-width: 300px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.auth-body h1 {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.auth-body button {
+  margin-top: 50px;
+}
+
+.auth-body input {
+  margin-top: 10px;
+}
+
+.starterset {
+  margin: 10px;
+  border-radius: 20px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  max-height: 165px;
+  text-align: center !important;
+  background-color: white;
+}
+
+.starterset .image-container {
+  border-radius: 17px;
+  height: 50%;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.starterset .pack-title {
+  margin-top: 5px;
+  max-height: 30px;
+}
+
+.starterset .pack-title h1 {
+  font-size: 21px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.starterset .pack-description {
+  padding: 5px 4px 0px 4px;
+  font-size: 13px;
+  max-height: 45px;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+#main-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+#main-body #info-fields {
+  width: 30%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+#main-body #info-fields input, #main-body #info-fields textarea {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#main-body #info-fields input:focus, #main-body #info-fields textarea:focus {
+  -webkit-box-shadow: inset 0 0 4px grey;
+          box-shadow: inset 0 0 4px grey;
+}
+
+#main-body #info-fields textarea::-webkit-input-placeholder {
+  text-align: center;
+}
+
+#main-body #info-fields textarea:-ms-input-placeholder {
+  text-align: center;
+}
+
+#main-body #info-fields textarea::-ms-input-placeholder {
+  text-align: center;
+}
+
+#main-body #info-fields textarea::placeholder {
+  text-align: center;
+}
+
+#main-body #info-fields input[type=file] {
+  display: none;
+}
+
+#main-body #info-fields #cover-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 50px;
+  color: grey;
+}
+
+#main-body #info-fields #category-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#main-body #info-fields #category-button-container .category-button {
+  height: 35px;
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 5px 15px 5px 15px;
+  margin: 10px 0px 0px 10px;
+}
+
+#main-body #info-fields #category-button-container .activated {
+  background-color: #009688;
+  color: white;
+}
+
+#main-body #info-fields #cover-image-container {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#main-body #info-fields #cover-image-container img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+}
+
+#main-body #info-fields .entry-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#main-body #info-fields .entry-button-container .input-button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  min-width: 150px;
+  margin: 5px;
+  margin-top: 10px;
+}
+
+#main-body #editor-fields {
+  margin-left: 20px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+}
+
+#main-body #editor-fields #editor-container {
+  width: 100%;
+  border-radius: 20px;
+  max-width: 650px;
+}
+
+#main-body #editor-fields #editor, #main-body #editor-fields .ql-toolbar {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px -2px;
+          box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px -2px;
+  border: none !important;
+  font-family: 'Quicksand' !important;
+  background-color: #FAFAFA;
+}
+
+#main-body #editor-fields #editor {
+  border-radius: 0 0 20px 20px !important;
+}
+
+#main-body #editor-fields .ql-toolbar {
+  border-radius: 20px 20px 0 0 !important;
+}
+
+#swiper-body {
+  position: relative;
+  height: 100%;
+}
+
+#swiper-body .category-title {
+  margin: 30px 0px 0px 20px;
+  font-size: 25px;
+}
+
+#swiper-body .pack-swiper .swiper-container {
+  width: 100%;
+  height: 230px;
+}
+
+#swiper-body .pack-swiper .swiper-wrapper {
+  padding: 20px;
+}
+
+#swiper-body .pack-swiper .swiper-slide {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+
+#swiper-body .pack-swiper .swiper-slide:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  z-index: 1;
+}
+
+#swiper-body .pack-swiper .swiper-slide:first-child:hover {
+  margin: 0 40px;
+}
+
+#swiper-body .pack-swiper .last:hover {
+  margin: 0 -40px;
+}
+
+.main-body-account {
+  max-width: 300px;
+}
+
+.main-body-account button {
+  margin-top: 20px;
+}
+
+.main-body-account .display-data {
+  padding: 20px;
+  margin-top: 50px;
+}
+/*# sourceMappingURL=style.css.map */

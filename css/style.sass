@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+$primary: #3f51b5
+$primaryDark: #303f9f
+$primaryLight: #c5cae9
+$accent: #009688
+$primaryText: #212121
+$secondaryText: #757575
+$divider: #bdbdbd
+$lightGray: #FAFAFA
+
+body
+    font-family: 'Quicksand' !important
+    color: $primaryText !important
+
+button, input
+    border: none
+    outline: none
+    height: 50px
+    text-align: center
+
+textarea
+    border: none
+    outline: none
+    resize: none
+
+button, label
+    cursor: pointer
+
+.text-center
+    text-align: center
+
+.center
+    margin: 0 auto
+
+.swiper-seperator
+    width: 95%
+    height: 2px
+    background-color: black
+    margin: 0 auto
+
+.bg-accent
+    background-color: $accent
+    color: white
+
+.bg-standard
+    background-color: $lightGray
+    color: $secondaryText
+
+.round-style
+    border-radius: 20px
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+
+.full-width
+    width: 100% 
+
+.title-text
+    font-size: 50px
+    text-align: center
+    font-weight: 500
+
+.category-title-text
+    font-size: 30px
+    font-weight: 400
+
+.error-text
+    color: red
+
+.flex-center
+    display: flex
+    justify-content: center
+
+.vertical-center
+    display: flex
+    align-items: center
+
+a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
+    text-decoration: none !important
+    color: $primaryText !important
+
+.hidden
+    display: none
+
+.navbar
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+    min-height: 50px
+    display: flex
+    align-items: center
+    width: 100%
+
+    h1   
+        margin: 0
+        font-size: 23px
+        color: $primary
+    i
+        padding: 5px
+    a
+        margin-left: 20px
+    p
+        display: inline
+    
+    .profile-icon
+        width: 30px
+        height: 30px
+        background-size: cover
+        border: 0 !important
+        margin-left: 5px
+
+.auth-body
+    max-width: 300px
+    flex-wrap: wrap
+
+    h1
+        margin-top: 80px
+        margin-bottom: 30px
+
+    button
+        @extend .round-style
+        @extend .bg-accent
+        @extend .full-width
+        margin-top: 50px
+    input
+        @extend .round-style
+        @extend .bg-standard
+        @extend .full-width
+        margin-top: 10px
+
+.starterset
+    margin: 10px
+    border-radius: 20px
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+    max-height: 165px
+    text-align: center !important
+    background-color: white
+
+    .image-container
+        border-radius: 17px
+        height: 50%
+        background-size: cover
+        background-position-y: center
+
+    .pack-title
+        margin-top: 5px
+        max-height: 30px
+
+        h1
+            font-size: 21px
+            padding-bottom: 0px
+            margin-bottom: 0px
+
+    .pack-description
+        padding: 5px 4px 0px 4px
+        font-size: 13px
+        max-height: 45px
+        -webkit-line-clamp: 2
+        text-overflow: ellipsis
+        overflow: hidden
+        display: -webkit-box
+        -webkit-box-orient: vertical
+
+#main-body 
+    display: flex
+    justify-content: center
+    padding: 20px
+    max-width: 1700px
+    margin: 0 auto 
+
+    #info-fields
+        width: 30%
+        flex-grow: 1
+
+        input, textarea
+            @extend .round-style
+            @extend .bg-standard
+            width: 100%
+            margin-bottom: 15px
+
+            &:focus
+                box-shadow: inset 0 0 4px grey 
+
+        textarea::placeholder
+            text-align: center
+        
+        input[type=file]
+            display: none
+
+        #cover-button
+            @extend .round-style
+            @extend .bg-standard
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 100%
+            height: 50px
+            color: grey
+        
+        #category-button-container
+            display: flex
+            flex-wrap: wrap
+
+            .category-button
+                @extend .bg-standard
+                height: 35px
+                border-radius: 15px
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+                padding: 5px 15px 5px 15px
+                margin: 10px 0px 0px 10px
+            
+            .activated
+                background-color: $accent
+                color: white
+
+        #cover-image-container
+            margin-bottom: 20px
+            margin-top: 20px
+
+            img
+                @extend .round-style
+                width: 100%
+                object-fit: cover
+                overflow: hidden
+
+        .entry-button-container
+            display: flex
+            flex-wrap: wrap
+
+            .input-button
+                @extend .round-style
+                @extend .bg-accent
+                flex: 1 0 auto
+                min-width: 150px
+                margin: 5px
+                margin-top: 10px
+                
+    #editor-fields
+        margin-left: 20px
+        flex-grow: 2
+
+        #editor-container
+            width: 100%
+            border-radius: 20px
+            max-width: 650px
+
+        #editor, .ql-toolbar
+            box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 4px -2px
+            border: none !important
+            font-family: 'Quicksand' !important
+            background-color: #FAFAFA
+
+        #editor
+            border-radius: 0 0 20px 20px !important
+
+        .ql-toolbar
+            border-radius: 20px 20px 0 0 !important
+
+#swiper-body
+    position: relative
+    height: 100%
+
+    .category-title
+            margin: 30px 0px 0px 20px
+            font-size: 25px
+
+    .pack-swiper
+        .swiper-container
+            width: 100%
+            height: 230px
+
+
+        .swiper-wrapper
+            padding: 20px
+            
+        .swiper-slide
+            transition: 250ms all
+
+            &:hover
+                transform: scale(1.2)
+                z-index: 1
+            
+            &:first-child:hover
+                margin: 0 40px
+            
+        .last:hover
+            margin: 0 -40px
+        
+.main-body-account
+    @extend .center
+    @extend .text-center
+    max-width: 300px
+
+    button
+        @extend .full-width
+        @extend .round-style
+        margin-top: 20px
+
+    .display-data
+        @extend .full-width
+        @extend .round-style
+        @extend .bg-standard
+        padding: 20px
+        margin-top: 50px

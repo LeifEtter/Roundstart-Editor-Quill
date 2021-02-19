@@ -13,40 +13,33 @@ let db = firebase.firestore(app);
 let packs = db.collection("packs");
 let users = db.collection("users");
 
-let categories = [
-  "Gesundheit",
-  "Finanzen",
-  "Beruf",
-  "Versicherung",
-  "Wohnen",
-  "Ernährung",
-];
+console.log(sessionStorage.getItem('local_uid'));
 
 async function savePhoto() {
   var submitterID = sessionStorage.getItem("local_uid");
   var data = new FormData();
   let photo = document.getElementById("cover-image").files[0];
-  var blob = photo.slice(0, photo.size, 'image/png');
-
+  var blob = photo.slice(0, photo.size, "image/png");
   var filename = document.getElementById("cover-image").value;
-  var filename = filename.split('.').slice(0, -1).join('.');
-  var filenamefull = filename + '-user-' + submitterID.toString();
-  var newFile = new File([blob], filenamefull + '.jpg', {type: 'image/png'});
-  data.append('cover-image', newFile);
+  var filename = filename.split(".").slice(0, -1).join(".");
+  var filenamefull = filename + "-user-" + submitterID.toString();
+  var newFile = new File([blob], filenamefull + ".jpg", { type: "image/png" });
+  data.append("cover-image", newFile);
+
   $.ajax({
-      url: '../upload.php',
-      data: data,
-      type: 'POST',
-      processData: false,
-      contentType: false,
-      success: function() {
-          console.log("Success!");
-      },
+    url: "../upload.php",
+    data: data,
+    type: "POST",
+    processData: false,
+    contentType: false,
+    success: function () {
+      console.log("Success!");
+    },
   });
-}
+}  
 
 async function addPack() {
-  await savePhoto();
+  /*await savePhoto();*/
   var categories = [];
   $(".activated").each(function () {
     categories.push($(this).attr("id"));
@@ -57,23 +50,23 @@ async function addPack() {
   let content = quill.getContents().ops;
   let htmlContent = quill.root.innerHTML;
 
-  var filename = document.getElementById("cover-image").value;
-  var filename = filename.split('.').slice(0, -1).join('.');
-  var filename = filename.replace(/^.*[\\\/]/, '');
-  var cover_image = filename + '-user-' + creatorId.toString();
+  /*var filename = document.getElementById("cover-image").value;
+  var filename = filename.split(".").slice(0, -1).join(".");
+  var filename = filename.replace(/^.*[\\\/]/, "");
+  var cover_image = filename + "-user-" + creatorId.toString();*/
 
   packs
     .doc()
     .set({
       name: title,
-      creator: 'template',
+      creator: "template",
       description: description,
       content: content,
       categories: categories,
       htmlContent: htmlContent,
       creator_id: creatorId,
-      verified: true,
-      cover_image: cover_image,
+      verified: false,
+      cover_image: 'tesla.jpg',
     })
     .catch(function (error) {
       console.log("Error adding documents: ", error);
@@ -90,15 +83,22 @@ async function getUserRank() {
 }
 
 async function getPacksByCategory(category, verified, user) {
+  console.log(sessionStorage.getItem('local_uid'));
+  var attribute = 'categories';
+  var comparer = 'array-contains';
   var docs = [];
-  !category ? category = categories : null;
+  if(!category) {
+    attribute = 'public';
+    category = true;
+    comparer = '==';
+  }
   var query = await packs
-    .where("categories", "array-contains", category)
+    .where(attribute, comparer, category)
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        console.log('found doc');
         doc = doc.data();
+
         if (verified && !user) {
           doc["verified"] == true ? docs.push(doc) : null;
         } else if (!verified && user) {
@@ -106,10 +106,15 @@ async function getPacksByCategory(category, verified, user) {
             ? docs.push(doc)
             : null;
         } else if (verified && user) {
+          
           if (
             doc["verified"] == true &&
             doc["creator_id"] == sessionStorage.getItem("local_uid")
           ) {
+            docs.push(doc);
+          }
+        } else if(!verified && !user){
+          if(doc['verified'] == false) {
             docs.push(doc);
           }
         } else {
@@ -125,7 +130,52 @@ async function getPacksByCategory(category, verified, user) {
     console.log(`${docs.length} documents found for ${category}`);
     return docs;
   } else {
-    console.log("No Document found");
+    console.log(`No Document found for ${category}`);
     return null;
   }
+}
+
+async function getProfileData() {
+    var uid = sessionStorage.getItem('local_uid');
+    const snapshot = await db.collection('users').doc(uid).get();
+    const data = snapshot.data()
+    if(data == undefined) {
+      return null;
+    } else {
+      return data;
+    }
+}
+function logout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        sessionStorage.setItem('local_uid', null);
+        window.location.href = "../pages/login.html";
+      })
+      .catch(function (error) {
+        console.log("Error singing out: ", error);
+      });
+      sessionStorage.setItem('local_uid', null);
+}
+
+async function login() {
+    resetError();
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("passwort").value;
+  
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log(userCredential.uid);
+        console.log("Signed in succesfully!");
+        window.location.href = "../pages/user-info.html";
+      })
+      .catch(function (error) {
+        console.log("Error logging in: ", error);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        errorOutput(errorMessage, errorCode);
+      });
 }
