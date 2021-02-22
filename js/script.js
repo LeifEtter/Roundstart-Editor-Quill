@@ -111,7 +111,7 @@ async function register() {
     });
   if (success == true) {
     await addUser(user.uid);
-    window.location.href = "../pages/user-info.html";
+    window.location.href = "../pages/feed.html";
   }
 }
 
@@ -122,7 +122,7 @@ async function login() {
     .signInWithEmailAndPassword($("#email").val(), $("#passwort").val())
     .then((userCredential) => {
       console.log("Signed in succesfully!");
-      window.location.href = "../pages/user-info.html";
+      window.location.href = "../pages/feed.html";
     })
     .catch(function (error) {
       console.log("Error logging in: ", error);
