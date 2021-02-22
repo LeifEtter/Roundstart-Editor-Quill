@@ -317,30 +317,36 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
         margin-top: 50px
 
 #starterset-body
-    width: 80%
-    max-width: 600px
+    width: 100%
+    display: flex
+    
+    flex-direction: column
+    align-items: center
 
-    #pack-title
-        color: $primaryText
-        font-size: 50px
-        font-weight: 700
+    #set-head-content
+        width: 50%
 
-    #pack-description
-        color: $secondaryText
-        font-size: 25px
+        #pack-title
+            color: $primaryText
+            font-size: 50px
+            font-weight: 700
 
-    #pack-image-container
+        #pack-description
+            color: $secondaryText
+            font-size: 25px
 
-        img
-            @extend .round-style
-            width: 80%
-            height: 25%
-            object-fit: cover
-            overflow: hidden
+    #pack-image
+        @extend .round-style
+        height: 30vw
+        width: 80%
+        object-fit: cover
+        overflow: hidden
 
     #main-set
         margin-top: 30px
         padding-bottom: 50px
+        width: 60%
+        text-align: left
 
 #editor-button-container
     display: flex

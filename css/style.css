@@ -51,7 +51,7 @@ button, label {
   color: #757575;
 }
 
-.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data, #starterset-body #pack-image-container img {
+.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data, #starterset-body #pack-image {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -410,24 +410,37 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
 }
 
 #starterset-body {
-  width: 80%;
-  max-width: 600px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-#starterset-body #pack-title {
+#starterset-body #set-head-content {
+  width: 50%;
+}
+
+#starterset-body #set-head-content #pack-title {
   color: #212121;
   font-size: 50px;
   font-weight: 700;
 }
 
-#starterset-body #pack-description {
+#starterset-body #set-head-content #pack-description {
   color: #757575;
   font-size: 25px;
 }
 
-#starterset-body #pack-image-container img {
+#starterset-body #pack-image {
+  height: 30vw;
   width: 80%;
-  height: 25%;
   -o-object-fit: cover;
      object-fit: cover;
   overflow: hidden;
@@ -436,6 +449,8 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
 #starterset-body #main-set {
   margin-top: 30px;
   padding-bottom: 50px;
+  width: 60%;
+  text-align: left;
 }
 
 #editor-button-container {

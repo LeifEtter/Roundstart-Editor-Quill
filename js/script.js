@@ -223,7 +223,7 @@ function initSwiperBySelector(selector) {
       },
   });
 }
-
+  
 async function addBySelector(selector, verified, user, editor) {
   if(editor) { var save = selector; selector = null; };
   var packs = await getPacksByCategory(selector, verified, user);
@@ -231,7 +231,7 @@ async function addBySelector(selector, verified, user, editor) {
   if (packs) {   
       for (let pack of packs) {
           $(`.sw-${selector}`).append(`
-              <div class="starterset swiper-slide" onclick="{window.location.href = 'view-pack.html?${pack['clean_name']}'}">
+              <div class="starterset swiper-slide" onclick="{window.location.href = 'starterset.html?${pack['clean_name']}'}">
                   <div class="image-container" style="background-image: url('../../img/covers/${pack['cover_image']}');"></div>
                   <div class="preview-text-container">
                       <div class="pack-title">
@@ -326,5 +326,5 @@ async function addContent() {
   $('#pack-title').text(pack['name']);
   $('#pack-description').text(pack['description']);
   $('#main-set').append(pack['htmlContent']);
-
+  $("#pack-image").attr("src", `../img/covers/${pack['cover_image']}`);
 }
