@@ -88,6 +88,59 @@ async function addPack() {
   console.log("Pack added succesfully!");
 }
 
+async function updatePack(id) {
+  /*await savePhoto();*/
+  var categories = [];
+  $(".activated").each(function () {
+    categories.push($(this).attr("id"));
+  });
+  var creatorId = sessionStorage.getItem("local_uid");
+  var title = document.getElementById("title").value;
+  var description = document.getElementById("description").value;
+  let content = quill.getContents().ops;
+  let htmlContent = quill.root.innerHTML;
+
+  var cleanName = title.replace(/\s/g, '-');
+  cleanName = cleanName.replace('ä', 'ae')
+  cleanName = cleanName.replace('ü', 'ue')
+  cleanName = cleanName.replace('ö', 'oe')
+  cleanName = cleanName.replace('ß', 'ss')
+  cleanName = cleanName.replace('Ä', 'Ae')
+  cleanName = cleanName.replace('Ü', 'Ue')
+  cleanName = cleanName.replace('Ö', 'Oe')
+  cleanName = cleanName.replace("'", "")
+  cleanName = cleanName.replace("&", "und")
+  console.log(cleanName);
+
+  /*var filename = document.getElementById("cover-image").value;
+  var filename = filename.split(".").slice(0, -1).join(".");
+  var filename = filename.replace(/^.*[\\\/]/, "");
+  var cover_image = filename + "-user-" + creatorId.toString();*/
+
+  packs
+    .doc(id)
+    .update({
+      name: title,
+      creator: "template",
+      description: description,
+      content: content,
+      categories: categories,
+      htmlContent: htmlContent,
+      creator_id: creatorId,
+      verified: false,
+      cover_image: 'tesla.jpg',
+      clean_name: cleanName,
+      public: true,
+    })
+    .catch(function (error) {
+      console.log("Error adding documents: ", error);
+    });
+
+  console.log("Pack added succesfully!");
+}
+
+
+
 async function getUserRank() {
   uid = sessionStorage.getItem("local_uid");
   const snapshot = await db.collection("users").doc(uid).get();
@@ -103,9 +156,9 @@ async function getPackByName(name){
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (document) {
         doc = document.data();
+        doc['id'] = document.id;
       })
     })
-  console.log(doc['creator']);
   return doc;
 }
 
@@ -130,6 +183,7 @@ async function getPacksByCategory(category, verified, user) {
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         doc = doc.data();
+        console.log(`doc found: ${doc['name']}`);
         if (verified && !user) {
           doc["verified"] == true ? docs.push(doc) : null;
         } else if (!verified && user) {

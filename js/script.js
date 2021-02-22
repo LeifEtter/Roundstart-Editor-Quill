@@ -225,13 +225,17 @@ function initSwiperBySelector(selector) {
 }
   
 async function addBySelector(selector, verified, user, editor) {
+  var onClickLocation = 'starterset.html';
   if(editor) { var save = selector; selector = null; };
   var packs = await getPacksByCategory(selector, verified, user);
-  if(editor) { selector = save};
+  if(editor) { 
+    selector = save;
+    onClickLocation = 'edit-pack.html';
+  }
   if (packs) {   
       for (let pack of packs) {
           $(`.sw-${selector}`).append(`
-              <div class="starterset swiper-slide" onclick="{window.location.href = 'starterset.html?${pack['clean_name']}'}">
+              <div class="starterset swiper-slide" onclick="{window.location.href = '${onClickLocation}?${pack['clean_name']}'}">
                   <div class="image-container" style="background-image: url('../../img/covers/${pack['cover_image']}');"></div>
                   <div class="preview-text-container">
                       <div class="pack-title">
@@ -327,4 +331,18 @@ async function addContent() {
   $('#pack-description').text(pack['description']);
   $('#main-set').append(pack['htmlContent']);
   $("#pack-image").attr("src", `../img/covers/${pack['cover_image']}`);
+}
+
+async function fillData() {
+  var params = window.location.search;
+  if(params) {
+    var pack = await getParam();
+    $('#title').val(pack['name']);
+    $('#description').val(pack['description']);
+    quill.setContents(pack['content']);
+    for(category of pack['categories']) {
+      toggleButton(category);
+    }
+    $('#submit-pack').attr('onmousedown', `{updatePack('${pack['id']}')}`)
+  }
 }

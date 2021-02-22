@@ -7,7 +7,7 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="restricted">
     <div id="nav-placeholder"></div>
     <div id="main-body" class="center">
       <div id="info-fields">
@@ -20,7 +20,7 @@
         <div class="entry-button-container">
           <button class="input-button" onmousedown="{addPack();}">Vorschau</button>
           <button class="input-button" onmousedown="{addPack();}">Speichern</button> 
-          <button class="input-button" onmousedown="{addPack();}">Einreichen</button>
+          <button class="input-button" id="submit-pack" onmousedown="{addPack();}">Einreichen</button>
         </div>
       </div>
 
@@ -46,6 +46,7 @@
           placeholder: 'Inhalt...'
         });
         generateCategories();
+        fillData();
     </script>
 </body>
 </html>
