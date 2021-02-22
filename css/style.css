@@ -51,7 +51,7 @@ button, label {
   color: #757575;
 }
 
-.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data {
+.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data, #starterset-body #pack-image-container img {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -229,6 +229,11 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
   margin-bottom: 15px;
 }
 
+#main-body #info-fields input:focus, #main-body #info-fields textarea:focus {
+  -webkit-box-shadow: inset 0 0 4px grey;
+          box-shadow: inset 0 0 4px grey;
+}
+
 #main-body #info-fields textarea::-webkit-input-placeholder {
   text-align: center;
 }
@@ -243,6 +248,10 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
 
 #main-body #info-fields textarea::placeholder {
   text-align: center;
+}
+
+#main-body #info-fields textarea {
+  padding: 15px;
 }
 
 #main-body #info-fields input[type=file] {
@@ -279,11 +288,13 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 5px 15px 5px 15px;
   margin: 10px 0px 0px 10px;
+  outline: none !important;
 }
 
 #main-body #info-fields #category-button-container .activated {
   background-color: #009688;
   color: white;
+  outline: none !important;
 }
 
 #main-body #info-fields #cover-image-container {
@@ -313,6 +324,7 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
   min-width: 150px;
   margin: 5px;
   margin-top: 10px;
+  outline: none;
 }
 
 #main-body #editor-fields {
@@ -393,5 +405,34 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
 .main-body-account .display-data {
   padding: 20px;
   margin-top: 50px;
+}
+
+#starterset-body {
+  width: 80%;
+  max-width: 600px;
+}
+
+#starterset-body #pack-title {
+  color: #212121;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+#starterset-body #pack-description {
+  color: #757575;
+  font-size: 25px;
+}
+
+#starterset-body #pack-image-container img {
+  width: 80%;
+  height: 25%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+}
+
+#starterset-body #main-set {
+  margin-top: 30px;
+  padding-bottom: 50px;
 }
 /*# sourceMappingURL=style.css.map */

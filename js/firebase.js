@@ -50,6 +50,18 @@ async function addPack() {
   let content = quill.getContents().ops;
   let htmlContent = quill.root.innerHTML;
 
+  var cleanName = title.replace(/\s/g, '-');
+  cleanName = cleanName.replace('ä', 'ae')
+  cleanName = cleanName.replace('ü', 'ue')
+  cleanName = cleanName.replace('ö', 'oe')
+  cleanName = cleanName.replace('ß', 'ss')
+  cleanName = cleanName.replace('Ä', 'Ae')
+  cleanName = cleanName.replace('Ü', 'Ue')
+  cleanName = cleanName.replace('Ö', 'Oe')
+  cleanName = cleanName.replace("'", "")
+  cleanName = cleanName.replace("&", "und")
+  console.log(cleanName);
+
   /*var filename = document.getElementById("cover-image").value;
   var filename = filename.split(".").slice(0, -1).join(".");
   var filename = filename.replace(/^.*[\\\/]/, "");
@@ -67,6 +79,7 @@ async function addPack() {
       creator_id: creatorId,
       verified: false,
       cover_image: 'tesla.jpg',
+      clean_name: cleanName
     })
     .catch(function (error) {
       console.log("Error adding documents: ", error);
@@ -82,8 +95,27 @@ async function getUserRank() {
   return data["rank"];
 }
 
+async function getPackByName(name){
+  var doc;
+  var query = await db.collection('packs')
+    .where('clean_name', '==', name)
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (document) {
+        doc = document.data();
+      })
+    })
+  console.log(doc['creator']);
+  return doc;
+}
+
+async function getPackByID(id){
+  const snapshot = await db.collection("packs").doc(id).get();
+  const data = snapshot();
+  return data;
+}
+
 async function getPacksByCategory(category, verified, user) {
-  console.log(sessionStorage.getItem('local_uid'));
   var attribute = 'categories';
   var comparer = 'array-contains';
   var docs = [];
@@ -98,7 +130,6 @@ async function getPacksByCategory(category, verified, user) {
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
         doc = doc.data();
-
         if (verified && !user) {
           doc["verified"] == true ? docs.push(doc) : null;
         } else if (!verified && user) {
@@ -127,10 +158,8 @@ async function getPacksByCategory(category, verified, user) {
     });
 
   if (!docs.length == 0) {
-    console.log(`${docs.length} documents found for ${category}`);
     return docs;
   } else {
-    console.log(`No Document found for ${category}`);
     return null;
   }
 }

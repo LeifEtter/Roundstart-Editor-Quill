@@ -126,7 +126,7 @@ async function login() {
     })
     .catch(function (error) {
       console.log("Error logging in: ", error);
-      errorOutput(errorMessage, errorCode);
+      errorOutput(error.message, error.code);
     });
 }
 
@@ -231,7 +231,7 @@ async function addBySelector(selector, verified, user, editor) {
   if (packs) {   
       for (let pack of packs) {
           $(`.sw-${selector}`).append(`
-              <div class="starterset swiper-slide">
+              <div class="starterset swiper-slide" onclick="{window.location.href = 'view-pack.html?${pack['clean_name']}'}">
                   <div class="image-container" style="background-image: url('../../img/covers/${pack['cover_image']}');"></div>
                   <div class="preview-text-container">
                       <div class="pack-title">
@@ -296,5 +296,22 @@ async function addPacksByRank() {
   addSwiperStructure('global-verified-pack-swiper', 'Alle Verifizierte Startersets');
   await addBySelector('global-verified-pack-swiper', true, false, true);
   initSwiperBySelector('global-verified-pack-swiper');
+
+}
+
+//#############################Show Pack#########################//
+
+async function getParam() {
+  var withQuestionMark = window.location.search;
+  var packName = withQuestionMark.substring(1);
+  var pack = await getPackByName(packName);
+  return pack;
+}
+
+async function addContent() {
+  var pack = await getParam();
+  $('#pack-title').text(pack['name']);
+  $('#pack-description').text(pack['description']);
+  $('#main-set').append(pack['htmlContent']);
 
 }
