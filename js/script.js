@@ -259,7 +259,6 @@ function addSwiperStructure(selector, title) {
                   <div class="swiper-button-prev"></div>
               </div>
           </div>
-          <div class="swiper-seperator"></div>
       `);
 }
 
@@ -272,9 +271,14 @@ async function addSwipers() {
 }
 
 async function reinitSwipers() {
-  for(let category of categories) {
+  if($("body").attr("class") == "restricted editor") {
+    initEditorSwipers();
+  } else {
+    for(let category of categories) {
       initSwiperBySelector(category);
+    }
   }
+  
 }
 
 async function addPacksByRank() {
@@ -289,14 +293,23 @@ async function addPacksByRank() {
   await addBySelector('user-verified-pack-swiper', true, true, true);
   initSwiperBySelector('user-verified-pack-swiper');
 
-  addSwiperStructure('global-unverified-pack-swiper', 'Alle Unverifizierte Startersets');
-  await addBySelector('global-unverified-pack-swiper', false, false, true);
+
+  if(rank='admin') {
+    addSwiperStructure('global-unverified-pack-swiper', 'Alle Unverifizierte Startersets');
+    await addBySelector('global-unverified-pack-swiper', false, false, true);
+    initSwiperBySelector('global-unverified-pack-swiper');
+
+    addSwiperStructure('global-verified-pack-swiper', 'Alle Verifizierte Startersets');
+    await addBySelector('global-verified-pack-swiper', true, false, true);
+    initSwiperBySelector('global-verified-pack-swiper');
+  }
+}
+
+async function initEditorSwipers() {
+  initSwiperBySelector('user-unverified-pack-swiper');
+  initSwiperBySelector('user-verified-pack-swiper');
   initSwiperBySelector('global-unverified-pack-swiper');
-
-  addSwiperStructure('global-verified-pack-swiper', 'Alle Verifizierte Startersets');
-  await addBySelector('global-verified-pack-swiper', true, false, true);
   initSwiperBySelector('global-verified-pack-swiper');
-
 }
 
 //#############################Show Pack#########################//
