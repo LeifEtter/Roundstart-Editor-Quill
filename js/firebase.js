@@ -174,37 +174,3 @@ async function getProfileData() {
       return data;
     }
 }
-function logout() {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        sessionStorage.setItem('local_uid', null);
-        window.location.href = "../pages/login.html";
-      })
-      .catch(function (error) {
-        console.log("Error singing out: ", error);
-      });
-      sessionStorage.setItem('local_uid', null);
-}
-
-async function login() {
-    resetError();
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("passwort").value;
-  
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        console.log(userCredential.uid);
-        console.log("Signed in succesfully!");
-        window.location.href = "../pages/user-info.html";
-      })
-      .catch(function (error) {
-        console.log("Error logging in: ", error);
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        errorOutput(errorMessage, errorCode);
-      });
-}

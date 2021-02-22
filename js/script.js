@@ -122,7 +122,7 @@ async function login() {
     .signInWithEmailAndPassword($("#email").val(), $("#passwort").val())
     .then((userCredential) => {
       console.log("Signed in succesfully!");
-      window.location.href = "../pages/feed.html";
+      window.location.href = "../pages/feed";
     })
     .catch(function (error) {
       console.log("Error logging in: ", error);
