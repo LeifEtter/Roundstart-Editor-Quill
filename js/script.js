@@ -248,7 +248,7 @@ async function addBySelector(selector, verified, user, editor) {
               </div> 
           `);
       }
-  }
+  } 
 }
 
 function addSwiperStructure(selector, title) {
@@ -329,7 +329,7 @@ async function addContent() {
   $('#pack-title').text(pack['name']);
   $('#pack-description').text(pack['description']);
   $('#main-set').append(pack['htmlContent']);
-  $("#pack-image").attr("src", `../img/covers/${pack['cover_image']}`);
+  $("#pack-image").attr("src", `${pack['cover_image']}`);
 }
 
 async function fillData() {

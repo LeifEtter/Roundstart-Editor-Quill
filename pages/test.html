@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    
+</head>
+<body>
+    <button id="image-urls">Get Image URL's</button>
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/popper/popper.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        async function imageURLs() {
+            var cleanNames = [];
+            var packs = await getPacksByCategory(false, true, false);
+            console.log(packs.length);
+            for(pack of packs) {
+                cleanNames.push(pack['clean_name']);
+            }
+            for(cleanName of cleanNames) {
+                var storageRef = firebase.storage().ref(`cover-images/H8t15XmZfYekNIMzyfxoHwmgEwp1/${cleanName}.jpg`);
+                var downloadURL = await storageRef.getDownloadURL();
+                console.log(`${downloadURL} belongs to ${cleanName}`);
+            }
+        }
+        $('#image-urls').click(function() {
+            imageURLs();
+        })
+    </script>
+</body>
+</html>
