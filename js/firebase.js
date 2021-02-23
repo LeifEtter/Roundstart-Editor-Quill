@@ -15,31 +15,15 @@ let users = db.collection("users");
 
 console.log(sessionStorage.getItem('local_uid'));
 
-async function savePhoto() {
-  var submitterID = sessionStorage.getItem("local_uid");
-  var data = new FormData();
-  let photo = document.getElementById("cover-image").files[0];
-  var blob = photo.slice(0, photo.size, "image/png");
-  var filename = document.getElementById("cover-image").value;
-  var filename = filename.split(".").slice(0, -1).join(".");
-  var filenamefull = filename + "-user-" + submitterID.toString();
-  var newFile = new File([blob], filenamefull + ".jpg", { type: "image/png" });
-  data.append("cover-image", newFile);
-
-  $.ajax({
-    url: "../upload.php",
-    data: data,
-    type: "POST",
-    processData: false,
-    contentType: false,
-    success: function () {
-      console.log("Success!");
-    },
-  });
-}  
+async function savePhoto(creatorId, cleanName) {
+  var file = $('#cover-image').prop('files')[0];
+  var storageRef = firebase.storage().ref(`cover-images/${creatorId}/${cleanName}`);
+  var task = await storageRef.put(file);
+  var downloadURL = await storageRef.getDownloadURL();
+  return downloadURL;
+} 
 
 async function addPack() {
-  await savePhoto();
   var categories = [];
   $(".activated").each(function () {
     categories.push($(this).attr("id"));
@@ -60,13 +44,7 @@ async function addPack() {
   cleanName = cleanName.replace('Ö', 'Oe')
   cleanName = cleanName.replace("'", "")
   cleanName = cleanName.replace("&", "und")
-  console.log(cleanName);
-
-  var filename = document.getElementById("cover-image").value;
-  var filename = filename.split(".").slice(0, -1).join(".");
-  var filename = filename.replace(/^.*[\\\/]/, "");
-  var cover_image = filename + "-user-" + creatorId.toString();
-
+  var downloadURL = await savePhoto(creatorId, cleanName);
   packs
     .doc()
     .set({
@@ -78,7 +56,7 @@ async function addPack() {
       htmlContent: htmlContent,
       creator_id: creatorId,
       verified: false,
-      cover_image: cover_image,
+      cover_image: downloadURL,
       clean_name: cleanName,
       public: true,
     })
@@ -91,7 +69,7 @@ async function addPack() {
 }
 
 async function updatePack(id) {
-  await savePhoto()
+  
   var categories = [];
   $(".activated").each(function () {
     categories.push($(this).attr("id"));
@@ -113,11 +91,7 @@ async function updatePack(id) {
   cleanName = cleanName.replace("'", "")
   cleanName = cleanName.replace("&", "und")
   console.log(cleanName);
-
-  var filename = document.getElementById("cover-image").value;
-  var filename = filename.split(".").slice(0, -1).join(".");
-  var filename = filename.replace(/^.*[\\\/]/, "");
-  var cover_image = filename + "-user-" + creatorId.toString();
+  await savePhoto()
 
   packs
     .doc(id)

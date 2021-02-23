@@ -236,7 +236,7 @@ async function addBySelector(selector, verified, user, editor) {
       for (let pack of packs) {
           $(`.sw-${selector}`).append(`
               <div class="starterset swiper-slide" onclick="{window.location.href = '${onClickLocation}?${pack['clean_name']}'}">
-                  <div class="image-container" style="background-image: url('../../img/covers/${pack['cover_image']}');"></div>
+                  <div class="image-container" style="background-image: url('${pack['cover_image']}');"></div>
                   <div class="preview-text-container">
                       <div class="pack-title">
                           <h1>${pack['name']}</h1>
