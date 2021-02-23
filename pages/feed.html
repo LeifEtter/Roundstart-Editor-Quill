@@ -25,7 +25,11 @@
         var elementsPerView;
         var screenWidth = $(window).width();
         setElementsPerView();
+        if(window.mobileCheck()) {
+            elementsPerView = 1;
+        }
         addSwipers();
+        
     </script>
 </body>
 </html>
