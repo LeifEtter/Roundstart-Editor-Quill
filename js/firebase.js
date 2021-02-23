@@ -39,7 +39,7 @@ async function savePhoto() {
 }  
 
 async function addPack() {
-  /*await savePhoto();*/
+  await savePhoto();
   var categories = [];
   $(".activated").each(function () {
     categories.push($(this).attr("id"));
@@ -62,10 +62,10 @@ async function addPack() {
   cleanName = cleanName.replace("&", "und")
   console.log(cleanName);
 
-  /*var filename = document.getElementById("cover-image").value;
+  var filename = document.getElementById("cover-image").value;
   var filename = filename.split(".").slice(0, -1).join(".");
   var filename = filename.replace(/^.*[\\\/]/, "");
-  var cover_image = filename + "-user-" + creatorId.toString();*/
+  var cover_image = filename + "-user-" + creatorId.toString();
 
   packs
     .doc()
