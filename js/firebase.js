@@ -78,8 +78,9 @@ async function addPack() {
       htmlContent: htmlContent,
       creator_id: creatorId,
       verified: false,
-      cover_image: 'tesla.jpg',
-      clean_name: cleanName
+      cover_image: cover_image,
+      clean_name: cleanName,
+      public: true,
     })
     .catch(function (error) {
       console.log("Error adding documents: ", error);
@@ -129,7 +130,7 @@ async function updatePack(id) {
       htmlContent: htmlContent,
       creator_id: creatorId,
       verified: false,
-      cover_image: 'tesla.jpg',
+      cover_image: cover_image,
       clean_name: cleanName,
       public: true,
     })
