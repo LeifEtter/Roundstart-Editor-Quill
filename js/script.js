@@ -282,7 +282,6 @@ async function reinitSwipers() {
       initSwiperBySelector(category);
     }
   }
-  
 }
 
 async function addPacksByRank() {
@@ -343,6 +342,14 @@ async function fillData() {
     for(category of pack['categories']) {
       toggleButton(category);
     }
-    $('#submit-pack').attr('onmousedown', `{updatePack('${pack['id']}')}`)
+    $('#submit-pack').attr('onmousedown', `{updatePack('${pack['id']}')}`);
+    $("#cover-image-display").attr("src", `../img/covers/${pack['cover_image']}`);
   }
+}
+
+function entrySuccess() {
+  $('#show-success').fadeIn('slow');
+  window.setTimeout(function(){
+    window.location.href = 'editor.html';  
+  }, 2000);
 }
