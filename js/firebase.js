@@ -115,8 +115,6 @@ async function updatePack(id) {
   console.log("Pack added succesfully!");
 }
 
-
-
 async function getUserRank() {
   uid = sessionStorage.getItem("local_uid");
   const snapshot = await db.collection("users").doc(uid).get();
@@ -167,7 +165,6 @@ async function getPacksByCategory(category, verified, user) {
             ? docs.push(doc)
             : null;
         } else if (verified && user) {
-          
           if (
             doc["verified"] == true &&
             doc["creator_id"] == sessionStorage.getItem("local_uid")
