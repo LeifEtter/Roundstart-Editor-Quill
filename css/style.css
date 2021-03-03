@@ -4,11 +4,25 @@ body {
   color: #212121 !important;
 }
 
+ul, li {
+  list-style-type: none !important;
+}
+
 button, input {
   border: none;
   outline: none;
   height: 50px;
   text-align: center;
+}
+
+button {
+  -webkit-transition: all .2s ease-in-out !important;
+  transition: all .2s ease-in-out !important;
+}
+
+button:hover {
+  -webkit-transform: scale(1.07) !important;
+          transform: scale(1.07) !important;
 }
 
 input:focus {
@@ -41,17 +55,17 @@ button, label {
   margin: 0 auto;
 }
 
-.bg-accent, .auth-body button, #main-body #info-fields .entry-button-container .input-button {
+.bg-accent, .auth-body button, #main-body #info-fields .entry-button-container .input-button, #upgrade-body #antrag-einreichen {
   background-color: #009688;
   color: white;
 }
 
-.bg-standard, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #category-button-container .category-button, .main-body-account .display-data {
+.bg-standard, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #category-button-container .category-button, .main-body-account .display-data, #upgrade-body #rank-buttons button, #upgrade-body #category-button-container .category-button {
   background-color: #FAFAFA;
   color: #757575;
 }
 
-.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data, #starterset-body #pack-image {
+.round-style, .auth-body button, .auth-body input, #main-body #info-fields input, #main-body #info-fields textarea, #main-body #info-fields #cover-button, #main-body #info-fields #cover-image-container img, #main-body #info-fields .entry-button-container .input-button, .main-body-account button, .main-body-account .display-data, #starterset-body #pack-image, #upgrade-body, #upgrade-body #rank-buttons button, #upgrade-body textarea, #upgrade-body #antrag-einreichen {
   border-radius: 20px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -133,6 +147,11 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
   width: 100%;
 }
 
+.navbar #logo-image {
+  height: 27px;
+  margin: 0;
+}
+
 .navbar h1 {
   margin: 0;
   font-size: 23px;
@@ -181,6 +200,10 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
 .auth-body input:focus {
   -webkit-box-shadow: inset 0 0 4px grey;
           box-shadow: inset 0 0 4px grey;
+}
+
+.auth-body #switch-auth {
+  margin-top: 5px;
 }
 
 .starterset {
@@ -479,5 +502,118 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
   width: 100%;
   padding: 20px;
   padding-top: 40px;
+}
+
+#upgrade-body {
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #FAFAFA;
+  width: 90%;
+  max-width: 700px;
+}
+
+#upgrade-body p {
+  color: #212121;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+#upgrade-body #rank-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#upgrade-body #rank-buttons input[type=radio] {
+  display: none;
+}
+
+#upgrade-body #rank-buttons button {
+  outline: none !important;
+  height: 35px;
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#upgrade-body #rank-buttons .activatedRank {
+  background-color: #3f51b5;
+  color: white;
+}
+
+#upgrade-body p {
+  color: #212121;
+  margin-top: 30px;
+  display: inline;
+  text-align: center;
+}
+
+#upgrade-body textarea {
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+#upgrade-body textarea:focus {
+  -webkit-box-shadow: inset 0 0 4px grey;
+          box-shadow: inset 0 0 4px grey;
+}
+
+#upgrade-body #expert-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#upgrade-body #category-button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#upgrade-body #category-button-container .category-button {
+  height: 35px;
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 5px 15px 5px 15px;
+  margin: 10px 0px 0px 5px;
+  outline: none !important;
+}
+
+#upgrade-body #category-button-container .activated {
+  background-color: #009688;
+  color: white;
+  outline: none !important;
+}
+
+#upgrade-body #antrag-einreichen {
+  width: 300px;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

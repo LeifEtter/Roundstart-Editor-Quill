@@ -37,8 +37,7 @@ function generateCategories() {
   console.log("Generating categories!");
   for (let category of categories) {
     $("#category-button-container").append(`
-            <button class="category-button" id="${category}" onClick="toggleButton('${category}')">${category}
-            </button>
+            <button class="category-button" id="${category}" onClick="toggleButton('${category}')">${category}</button>
         `);
   }
 }
@@ -128,7 +127,7 @@ async function login() {
     .signInWithEmailAndPassword($("#email").val(), $("#passwort").val())
     .then((userCredential) => {
       console.log("Signed in succesfully!");
-      window.location.href = "../pages/feed";
+      window.location.href = "../pages/feed.html";
     })
     .catch(function (error) {
       console.log("Error logging in: ", error);
@@ -366,4 +365,48 @@ function entrySuccess() {
   window.setTimeout(function(){
     window.location.href = 'editor.html';  
   }, 2000);
+}
+
+//################################Rank-Upgrade-Antrag##########################//
+function rankToggle(rank) {
+  $("#Creator").removeClass("activatedRank");
+  $("#Experte").removeClass("activatedRank");
+  $("#Moderator").removeClass("activatedRank");
+  $(`#${rank}`).toggleClass("activatedRank");
+  if(rank == 'Experte') {
+    $('#expert-category').append(`
+      <p id="expert-title">Deine Experten Kategorie/n</p>
+      <div id="category-button-container"></div>
+    `);
+    generateCategories();
+  } else {
+    $('#expert-title').remove();
+    $('#category-button-container').remove();
+  }
+  $(`#titel-rank-antrag`).text(`Sag uns warum du ein ${rank} werden willst!`);
+  
+}
+
+async function submitRequest() {
+  var expertRank = [];
+  var rank = $('.activatedRank').attr('id');
+  var text = $('textarea').val();
+  if(rank == 'Experte') {
+    $('.activated').each(function () {
+      expertRank.push(this.id);
+    });
+  }
+  var userData = await getProfileData();
+  var user = userData['name'];
+  await requests
+    .doc()
+    .set({
+      rank: rank,
+      expertRank: expertRank,
+      text: text,
+      user: user,
+    })
+    .catch(function (error) {
+      console.log("Error adding documents: ", error);
+    });
 }

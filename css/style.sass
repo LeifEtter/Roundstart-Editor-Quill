@@ -12,11 +12,20 @@ body
     font-family: 'Quicksand' !important
     color: $primaryText !important
 
+ul, li
+    list-style-type: none !important
+
 button, input
     border: none
     outline: none
     height: 50px
     text-align: center
+
+button
+    transition: all .2s ease-in-out !important
+
+button:hover
+    transform: scale(1.07) !important
 
 input:focus
     box-shadow: inset 0 0 4px grey 
@@ -98,13 +107,16 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
         color: $accent
         font-weight: 600
 
-
 .navbar
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
     min-height: 50px
     display: flex
     align-items: center
     width: 100%
+
+    #logo-image
+        height: 27px
+        margin: 0
 
     h1   
         margin: 0
@@ -114,6 +126,7 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
         padding: 5px
     a
         margin-left: 20px
+
     p
         display: inline
     
@@ -145,6 +158,9 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
 
     input:focus
         box-shadow: inset 0 0 4px grey 
+    
+    #switch-auth
+        margin-top: 5px
 
 .starterset
     margin: 10px
@@ -332,7 +348,6 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
 #starterset-body
     width: 100%
     display: flex
-    
     flex-direction: column
     align-items: center
 
@@ -368,3 +383,92 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover
     width: 100%
     padding: 20px
     padding-top: 40px
+
+#upgrade-body
+    padding: 20px
+    margin: 0 auto
+    margin-top: 50px
+    display: flex
+    justify-content: center
+    flex-direction: column
+    background-color: #FAFAFA
+    width: 90%
+    max-width: 700px
+    @extend .round-style
+
+    p   
+        color: $primaryText
+        text-align: center
+        font-weight: 500
+        font-size: 20px
+
+    #rank-buttons
+        display: flex
+        justify-content: center
+
+        input[type=radio]
+            display: none
+    
+        button
+            outline: none !important
+            height: 35px
+            padding: 0 10px 0 10px
+            cursor: pointer
+            margin-left: 10px
+            @extend .round-style
+            @extend .bg-standard
+        
+        .activatedRank
+            background-color: $primary
+            color: white
+        
+    p
+        color: $primaryText
+        margin-top: 30px
+        display: inline
+        text-align: center
+
+    textarea
+        padding: 15px
+        margin-bottom: 20px
+        @extend .round-style
+    
+    textarea:focus
+        box-shadow: inset 0 0 4px grey 
+
+    #expert-category
+        display: flex
+        justify-content: center
+        flex-direction: column
+
+
+    #category-button-container
+            display: flex
+            flex-wrap: wrap
+            max-width: 600px
+            margin: 0 auto
+           
+            .category-button
+                @extend .bg-standard
+                height: 35px
+                border-radius: 15px
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px
+                padding: 5px 15px 5px 15px
+                margin: 10px 0px 0px 5px
+                outline: none !important
+            
+            .activated
+                background-color: $accent
+                color: white
+                outline: none !important
+
+    #antrag-einreichen
+        width: 300px
+        margin: 0 auto
+        @extend .round-style
+        @extend .bg-accent
+            
+        
+            
+
+        

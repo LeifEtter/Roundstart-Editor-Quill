@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <div id="logoDiv">
-    <h1>ROUNDSTART</h1>
-  </div>
+  <img src="../img/logo.png" id="logo-image">  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,22 +9,28 @@
       <li class="nav-item active">
         <a href="../../pages/feed.html">
           <i class="fas fa-home"></i>
-          <p class="d-none d-md-inline">Startseite</p>
+          <p>Startseite</p>
         </a>
       </li>
       <li class="nav-item hidden" id="editor-access">
         <a href="../../pages/editor.html">
           <i class="fas fa-pen"></i>
-          <p class="d-none d-md-inline">Deine Startersets</p>
+          <p>Deine Startersets</p>
         </a>
       </li>
       <li class="nav-item" id="upgrade-access">
-        <a href="../../pages/editor-feed.html">
+        <a href="../../pages/upgrade-request.html">
           <i class="fas fa-plus"></i>
-          <p class="d-none d-md-inline">Upgrade Antrag</p>
+          <p>Upgrade Antrag</p>
         </a>
       </li>
     </ul>
+    <li class="nav-item" id="login-register-links">
+      <a href="../../pages/login.html">
+        <i class="fas fa-user"></i>
+        <p>Login/Register</p>
+      </a>
+    </li>
     <div class="dropdown-show hidden" id="dropdown-show-container">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -40,10 +44,6 @@
         <a class="dropdown-item" onmousedown="{logout();}" style="cursor: pointer;">Ausloggen</a>
       </div>
     </div>
-  </div>
-  <div id="login-register-links" class="">
-    <a href="../../pages/login.html">Login</a>
-    <a href="../../pages/register.html">Register</a>
   </div>
 </nav>
 <script>

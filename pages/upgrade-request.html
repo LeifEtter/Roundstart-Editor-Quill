@@ -4,37 +4,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" /> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div id="nav-placeholder"></div>
-    
-    <div class="auth-body center flex-center">
-        <h1 class="title-style text-center">Login</h1>
-        <input id="email" class="custom-text-input text-center" placeholder="Email"></input>
-        <input id="passwort" class="custom-text-input text-center" placeholder="Passwort" type="password"></input>
-        <p id="error-message" class="error-message text-center"></p>
-        <button onclick="{login();}" class="input-button full-width" id="login-button">Einloggen</button>
-        <a id="switch-auth" class="text-center" href="register.html">Du hast noch kein Account? Dann mach dir schnell eins!</a>
-    </div>
 
+    <div id="upgrade-body">
+        <h1 class="title-text">Upgrade Antrag</h1>
+        <p>Welchen Rank willst du beantragen?</p>
+        <div id="rank-buttons">
+            <button id="Creator" class="activatedRank" onclick="rankToggle(this.id)">Creator</button>
+            <button id="Experte" onclick="rankToggle(this.id)">Experte</button>
+            <button id="Moderator" onclick="rankToggle(this.id)">Moderator</button>
+        </div>
+        <div id="expert-category">
+        </div>
+        <p id="titel-rank-antrag">Sag uns warum du ein werden willst!</p>
+        <textarea rows="7"></textarea>
+        <button id="antrag-einreichen" onclick="submitRequest();">Einreichen</button>
+        
+    </div>
+    
+    
     <script src="../plugins/jquery/jquery.min.js"></script>
     <script src="../plugins/popper/popper.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="../js/constants.js"></script>
     <script src="../js/firebase.js"></script>
     <script src="../js/script.js"></script>
     <script>
-        async function redirect() {
-            var loggedIn = await checkLogin();
-            if(loggedIn){
-                window.location.href = "feed.html";
-            }
-        }
+        $(`#titel-rank-antrag`).text(`Sag uns warum du ein Creator werden willst!`);
     </script>
-    
 </body>
 </html>

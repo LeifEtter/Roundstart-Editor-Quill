@@ -12,6 +12,7 @@ let app = firebase.initializeApp(firebaseConfig);
 let db = firebase.firestore(app);
 let packs = db.collection("packs");
 let users = db.collection("users");
+let requests = db.collection("requests");
 
 console.log(sessionStorage.getItem('local_uid'));
 
