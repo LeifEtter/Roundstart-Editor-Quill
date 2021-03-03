@@ -117,6 +117,10 @@ a:link, a:visited, a:hover, a:active, .dropdown:hover, #dropdownMenuLink:hover {
   display: none !important;
 }
 
+button:focus {
+  outline: none !important;
+}
+
 #show-success {
   background-color: #FAFAFA;
   position: fixed;
